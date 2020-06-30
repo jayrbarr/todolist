@@ -47,7 +47,7 @@ class App extends Component {
     let todo = this.state.todo;
     let id = this.state.id;
     todos.push({ id, todo });
-    id += 1;
+    id++;
     todo = '';
     this.setState({
       todos,
@@ -57,10 +57,9 @@ class App extends Component {
   }
 
   deleteTodo = (e) => {
-    let id = e.target.id;
+    let id = parseInt(e.target.id, 10);
     let todo = this.state.todos.filter(todo => todo.id === id)[0];
     let index = this.state.todos.indexOf(todo);
-    console.log(index);
     let todos = [...this.state.todos];
     todos = todos.slice(0, index).concat(todos.slice(index + 1));
     this.setState({
